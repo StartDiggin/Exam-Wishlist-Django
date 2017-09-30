@@ -54,7 +54,6 @@ def item(request, id):
     'userItems':[],
     }
 
-    # context['list'].append(User.objects.get(id = request.session['id']))
     userProducts = Wish.objects.all()
     context['userItems'].append(Wish.objects.get(id = id))
 
