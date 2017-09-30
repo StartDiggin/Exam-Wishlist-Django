@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <h2>Hello, {{curUser.first_name}}!</h2>
+    <h2>Your Wish List:</h2>
+    {%for item in allProducts%}
+    <p><a href="/wish/item/{{item.id}}">{{item.products}}</a>   | {{item.updated_at}} | <a href="/wish/remove/{{item.id}}">Remove from Wishlist:</a></p>
+    {%endfor%}
+    <h2>All Other Users:</h2>
+    <div class="userWishListproducts">
+      <div class="products">
+        {%for item in allProducts%}
+        <p><a href="/wish/item/{{item.id}}">{{item.products}}</a> | {{item.created_at}}</p>
+        {%endfor%}
+      </div>
+      <div class="userProducts">
+        {%for user in allOtherUsers%}
+        <p>{{user.first_name}} | <a href="/wish/add/{{user.id}}">Add to Wishlist:</a></p>
+        {%endfor%}
+      </div>
+    </div>
+    <a href="/wish/addProduct">Add Item</a><br>
+    <a href="/wish/logout">Logout</a>
+  </body>
+  <style media="screen">
+    .products{
+      display: inline-block;
+      vertical-align: top;
+    }
+    .userProducts{
+      display: inline-block;
+    }
+  </style>
+</html>
